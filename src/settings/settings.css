@@ -1,0 +1,196 @@
+:root {
+  --bg: #17151a;
+  --panel: #201d25;
+  --card: #26222c;
+  --line: #3a3443;
+  --text: #f1edf5;
+  --muted: #a79fb3;
+  --accent: #f2a65a;
+  --accent-ink: #2a1b08;
+  --danger: #ff6b6b;
+  --radius: 12px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f3f0;
+    --panel: #ece7e2;
+    --card: #ffffff;
+    --line: #dcd4cc;
+    --text: #241f1b;
+    --muted: #6f665e;
+    --accent: #d9812b;
+    --accent-ink: #ffffff;
+    --danger: #c93b3b;
+    color-scheme: light;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+}
+
+nav {
+  width: 200px;
+  flex: none;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+nav h1 { font-size: 16px; margin: 0 8px 16px; letter-spacing: 0.2px; }
+nav button {
+  all: unset;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+}
+nav button:hover { color: var(--text); background: color-mix(in srgb, var(--text) 7%, transparent); }
+nav button.active { color: var(--text); background: color-mix(in srgb, var(--accent) 22%, transparent); font-weight: 600; }
+nav button:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+main { flex: 1; overflow-y: auto; padding: 24px 28px 40px; }
+.tab { display: none; max-width: 640px; }
+.tab.active { display: block; }
+h2 { font-size: 22px; margin: 0 0 6px; }
+h3 { font-size: 14px; margin: 0 0 10px; }
+.hint { color: var(--muted); margin: 4px 0 12px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card .hint { margin: 0; }
+
+label { display: block; font-weight: 600; }
+label > input:not([type="checkbox"]), label > select { display: block; margin-top: 6px; }
+label output, label .status { font-weight: 400; }
+label.check { display: flex; align-items: flex-start; gap: 10px; font-weight: 400; cursor: pointer; }
+label.check input { margin-top: 3px; accent-color: var(--accent); }
+.row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+.row > .status { align-self: center; }
+.grow { flex: 1; min-width: 180px; }
+
+input[type="text"], input[type="password"], input[type="url"], select {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  width: 100%;
+}
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+output { color: var(--muted); margin-left: 6px; font-variant-numeric: tabular-nums; }
+progress { width: 100%; height: 8px; accent-color: var(--accent); }
+
+button {
+  font: inherit;
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 9%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+button:hover { background: color-mix(in srgb, var(--text) 15%, transparent); }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+button.primary:hover { filter: brightness(1.08); }
+button.ghost { background: transparent; }
+button:disabled { opacity: 0.5; cursor: default; }
+
+.status { color: var(--muted); }
+.status.block { margin: 0; white-space: pre-wrap; }
+.status.error { color: var(--danger); }
+.status.ok { color: var(--accent); }
+
+.avatars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.avatar {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--text);
+  font: inherit;
+}
+.avatar:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); background: var(--card); }
+.avatar.selected { border-color: var(--accent); }
+.avatar .thumb {
+  height: 92px;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+}
+.avatar img { max-width: 100%; max-height: 92px; object-fit: contain; }
+.avatar .name { display: block; margin-top: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.avatar .kind { display: block; font-size: 12px; color: var(--muted); }
+.avatar .remove {
+  position: absolute; top: 4px; right: 4px;
+  width: 24px; height: 24px; padding: 0;
+  border-radius: 50%; line-height: 1;
+  opacity: 0;
+}
+.avatar:hover .remove, .avatar .remove:focus-visible { opacity: 1; }
+.avatar .remove:hover { background: var(--danger); border-color: var(--danger); color: #fff; }
+
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.list li {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 6px 6px 6px 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.list li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.list li.empty { color: var(--muted); padding: 8px 12px; }
+.list li button { padding: 4px 10px; flex: none; }
+
+h3.sub { margin-top: 6px; }
+.poses { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; }
+.pose {
+  position: relative;
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--text);
+  font: inherit;
+}
+.pose.filled { border-style: solid; }
+.pose:hover { border-color: var(--accent); background: var(--bg); }
+.pose .thumb { height: 70px; display: grid; place-items: center; font-size: 26px; color: var(--muted); }
+.pose img { max-width: 100%; max-height: 70px; object-fit: contain; }
+.pose .name { display: block; margin-top: 4px; font-size: 12px; }
+.pose .remove {
+  position: absolute; top: 3px; right: 3px;
+  width: 22px; height: 22px; padding: 0; border-radius: 50%; line-height: 1; opacity: 0;
+}
+.pose:hover .remove, .pose .remove:focus-visible { opacity: 1; }
+.pose .remove:hover { background: var(--danger); border-color: var(--danger); color: #fff; }

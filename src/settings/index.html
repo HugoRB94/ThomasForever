@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:">
+  <title>Ajustes · ThomasForever</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <nav id="nav">
+    <h1>ThomasForever</h1>
+    <button data-tab="pet" class="active">Mascota</button>
+    <button data-tab="behavior">Comportamiento</button>
+    <button data-tab="sound">Sonido</button>
+  </nav>
+
+  <main>
+    <!-- ================= Mascota ================= -->
+    <section id="tab-pet" class="tab active">
+      <h2>Tu mascota</h2>
+      <p class="hint">Sube una foto donde se vea entera y, a ser posible, de lado. El fondo se elimina en tu equipo: la foto no sale de él.</p>
+
+      <div id="avatars" class="avatars"></div>
+
+      <div class="card">
+        <h3>Añadir desde una foto</h3>
+        <div class="row">
+          <label class="grow">Nombre
+            <input id="new-name" type="text" maxlength="40" placeholder="Thomas">
+          </label>
+          <label>Calidad del recorte
+            <select id="cutout-quality">
+              <option value="high">Alta (descarga 170 MB la primera vez)</option>
+              <option value="fast">Rápida (5 MB)</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <button id="pick-photo" class="primary">Elegir foto…</button>
+          <input id="photo-input" type="file" accept="image/*" hidden>
+          <span id="import-status" class="status"></span>
+        </div>
+        <progress id="import-progress" max="1" value="0" hidden></progress>
+      </div>
+
+      <div class="card" id="avatar-options" hidden>
+        <h3>Avatar seleccionado</h3>
+        <div class="row">
+          <label class="grow">Nombre
+            <input id="avatar-name" type="text" maxlength="40">
+          </label>
+          <label>En la imagen mira hacia
+            <select id="avatar-facing">
+              <option value="right">la derecha</option>
+              <option value="left">la izquierda</option>
+            </select>
+          </label>
+        </div>
+        <h3 class="sub">Poses</h3>
+        <p class="hint">Añade fotos de tu mascota en otras posturas y la app las usará al caminar, dormir, comer, maullar o cuando la acaricies. Es gratis y todo se procesa en tu equipo.</p>
+        <div id="poses" class="poses"></div>
+        <input id="pose-input" type="file" accept="image/*" hidden>
+        <span id="pose-status" class="status"></span>
+        <progress id="pose-progress" max="1" value="0" hidden></progress>
+      </div>
+
+      <div class="card">
+        <label>Tamaño en pantalla <output id="scale-out"></output>
+          <input id="pet-scale" type="range" min="0.5" max="2.5" step="0.05">
+        </label>
+      </div>
+    </section>
+
+    <!-- ================= Comportamiento ================= -->
+    <section id="tab-behavior" class="tab">
+      <h2>Comportamiento</h2>
+      <div class="card">
+        <label>Nombre de la mascota
+          <input id="pet-name" type="text" maxlength="40">
+        </label>
+        <label>Nivel de actividad <output id="activity-out"></output>
+          <input id="activity" type="range" min="0" max="1" step="0.05">
+        </label>
+        <p class="hint">Bajo: pasea poco y duerme mucho. Alto: no para quieta y salta entre ventanas.</p>
+      </div>
+      <div class="card">
+        <label class="check">
+          <input id="window-interaction" type="checkbox">
+          <span>Interactuar con las ventanas (subirse a ellas, saltar cuando se cierran o minimizan)</span>
+        </label>
+        <p id="tracker-note" class="hint" hidden>La detección de ventanas no está disponible en este sistema.</p>
+        <label>Pantalla
+          <select id="display"></select>
+        </label>
+        <label class="check">
+          <input id="launch-at-login" type="checkbox">
+          <span>Iniciar con Windows</span>
+        </label>
+        <p id="login-note" class="hint" hidden>Solo tiene efecto en la versión instalada, no al ejecutar con npm start.</p>
+      </div>
+    </section>
+
+    <!-- ================= Sonido ================= -->
+    <section id="tab-sound" class="tab">
+      <h2>Sonido</h2>
+      <div class="card">
+        <label>Volumen <output id="volume-out"></output>
+          <input id="volume" type="range" min="0" max="1" step="0.05">
+        </label>
+        <label>Frecuencia de maullidos <output id="meow-out"></output>
+          <input id="meow-interval" type="range" min="0" max="30" step="1">
+        </label>
+        <div class="row">
+          <button id="test-meow">Probar maullido</button>
+          <button id="test-purr">Probar ronroneo</button>
+        </div>
+        <p class="hint">Si no oyes nada, abre el mezclador de volumen de Windows y comprueba que ThomasForever (aparece como Electron) no esté silenciado ni saliendo por otro dispositivo.</p>
+      </div>
+      <div class="card">
+        <h3>Maullidos incluidos</h3>
+        <p class="hint">Son grabaciones de gatos reales. Escúchalas y deja marcadas solo las que te gusten: la mascota elegirá una al azar entre ellas.</p>
+        <ul id="builtin-meows" class="list"></ul>
+      </div>
+      <div class="card">
+        <h3>Sonidos de tu mascota</h3>
+        <p class="hint">Si añades audios propios (los maullidos o ladridos de tu mascota) se usan en lugar de los incluidos, eligiendo uno al azar cada vez.</p>
+        <ul id="sounds" class="list"></ul>
+        <div class="row">
+          <button id="add-sounds" class="primary">Añadir audios…</button>
+          <span id="sound-status" class="status"></span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+Grabaciones de gato incluidas con ThomasForever
+===============================================
+
+Todas son grabaciones de gatos reales con licencia CC0 1.0 (dominio público).
+No exigen atribución; se citan por cortesía.
+
+Maullidos: BigSoundBank (Joseph Sardin) - https://bigsoundbank.com/search?q=meow
+Elegidos por análisis de audio entre 25 candidatos (tono más claro, menos ruido de
+fondo, sin saturación) y recortados al maullido principal.
+  meow-1.wav  <- "Meow cat #3"  (n.º 1891)
+  meow-2.wav  <- "Meow Cat #2"  (n.º 1890)
+  meow-3.wav  <- "Meow cat #5"  (n.º 1893)
+  meow-4.wav  <- "Meow cat #1"  (n.º 1889)
+
+Ronroneos: "cat purr meow", de Kerzoven - https://opengameart.org/content/cat-purr-meow
+  purr-1.wav  <- cat_purractive_loop.wav
+  purr-2.wav  <- cat_purrsleepy_loop.wav
+
+La app carga cualquier archivo de esta carpeta llamado meow-*.* (maullidos) o
+purr-*.* (ronroneos). En Ajustes > Sonido se puede escuchar cada maullido y
+elegir cuáles se usan.

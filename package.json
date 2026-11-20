@@ -1,0 +1,58 @@
+{
+  "name": "thomasforever",
+  "version": "0.1.0",
+  "description": "Mascota de escritorio interactiva generada a partir de fotos",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "node scripts/start.js",
+    "debug": "node scripts/start.js --debug",
+    "postinstall": "node scripts/ensure-electron.js",
+    "dist": "electron-builder --win nsis",
+    "pack": "electron-builder --win dir"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0"
+  },
+  "dependencies": {
+    "koffi": "^3.3.8",
+    "onnxruntime-node": "^1.31.1",
+    "pixi.js": "^8.23.0"
+  },
+  "allowScripts": {
+    "electron@45.4.1": true
+  },
+  "author": "ThomasForever",
+  "build": {
+    "appId": "app.thomasforever.desktop",
+    "productName": "ThomasForever",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json",
+      "!**/*.map",
+      "!node_modules/pixi.js/lib/**",
+      "!node_modules/pixi.js/src/**",
+      "!node_modules/onnxruntime-node/bin/napi-v6/darwin/**",
+      "!node_modules/onnxruntime-node/bin/napi-v6/linux/**",
+      "!node_modules/onnxruntime-node/bin/napi-v6/win32/arm64/**"
+    ],
+    "asarUnpack": [
+      "node_modules/koffi/**",
+      "node_modules/onnxruntime-node/**"
+    ],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false
+    }
+  }
+}
