@@ -10,7 +10,7 @@
     "dist": "electron-builder --win nsis",
     "pack": "electron-builder --win dir"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "devDependencies": {
     "electron": "^45.4.1",
@@ -24,7 +24,7 @@
   "allowScripts": {
     "electron@45.4.1": true
   },
-  "author": "ThomasForever",
+  "author": "HugoRB94",
   "build": {
     "appId": "app.thomasforever.desktop",
     "productName": "ThomasForever",
@@ -54,5 +54,9 @@
       "oneClick": true,
       "perMachine": false
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HugoRB94/ThomasForever.git"
   }
 }
