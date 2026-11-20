@@ -2,6 +2,10 @@
 
 Una mascota de escritorio para Windows hecha con las fotos de tu propia mascota. Vive encima de tus ventanas mientras trabajas: pasea, duerme, come, maúlla y reacciona a lo que haces.
 
+![Thomas sentado sobre una ventana recibiendo caricias, caminando por la barra de tareas y durmiendo; debajo, sus poses: sentado, maullando, caminando y durmiendo](docs/thomas.png)
+
+*Thomas tal y como lo dibuja la app, con las poses sacadas de sus fotos. La imagen es un montaje: las capturas de la mascota son reales y el escritorio de fondo es un ejemplo.*
+
 Todo se procesa en tu equipo. No hay cuentas, ni servidores, ni envío de fotos a ningún sitio.
 
 ## Qué hace
