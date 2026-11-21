@@ -31,6 +31,10 @@ npm install
 npm start
 ```
 
+En Windows, después de `npm install` puedes hacer **doble clic en `Iniciar ThomasForever.cmd`** en la raíz del proyecto en vez de escribir `npm start`. Sigue necesitando Node.js instalado.
+
+Si no quieres instalar Node.js, el instalador de Windows se publica en la sección [Releases](https://github.com/HugoRB94/ThomasForever/releases) del repositorio: descarga el `.exe`, ejecútalo y listo.
+
 La mascota aparece en la parte baja de la pantalla y un icono de gato en la bandeja del sistema.
 
 Si `npm install` no descarga el binario de Electron (algunas versiones de npm bloquean los scripts de instalación), el propio proyecto lo detecta y lo descarga al terminar la instalación.
